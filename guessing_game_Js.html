@@ -1,0 +1,239 @@
+<!doctype html><html><head> 
+  <title>
+   The calculator!!  
+ </title> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0"> 
+ <style type="text/css" id="dcoder_stylesheet">*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+:root
+{
+  --c1:white;
+}
+.main{
+  height:100vh;
+  background-image:linear-gradient(#667eea,skyblue);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  position:absolute;
+  top:0px;
+  width:100%;
+  overflow:hidden;
+}
+.container
+{
+ // background-image:linear-gradient(to right, #43e97b 0%, #38f9d7 100%);
+  width:96%;
+  background:rgba(255,255,255,.5);
+  height:60vh;
+  backdrop-filter:blur(8px);
+  border-radius:10px;
+  position:relative;
+  padding:20px;
+  display:flex;
+  overflow:hidden;
+  z-index:2;
+  align-items:center;
+  justify-content:space-around;
+  flex-direction:column; 
+  box-shadow: 
+    12px 12px 16px 0 rgba(0, 0, 0, 0.25),
+    -8px -8px 12px 0 rgba(255, 255, 255,.3);
+}
+.one
+{
+  display:flex;
+  flex-direction:column; 
+  align-items:center;
+  justify-content:center;
+  height:100px;
+
+  
+}
+.container div:nth-child(3)
+{
+  height:50%;
+  
+}
+.user_input
+{
+  padding:.5em 1em;
+  display:block;
+}
+input
+{
+  padding:2px 2px 0 0;
+  margin:10px;
+  width:100px;
+  border-radius:2px;
+  border:none;
+}
+button
+{
+  padding:5px;
+  background:rgba(138,43,226,.5);
+  border-radius:2px;
+  border:none;
+  
+  outline:0;
+}
+p
+{
+  margin:10px;
+}
+.curtain
+{
+  background:white;
+  width:100%;
+  top:0;
+  position:absolute;
+  height:100%;
+  clip-path:circle(40px at left 0);
+  border-radius:10px;
+  display:flex;
+  justify-content:center;
+  transition:all 1s ease;
+  align-items:center;
+  
+}
+.expand
+{
+  clip-path:circle(360px at left 0);
+  background:rgba(138,43,226,1);
+ 
+}
+.change
+{
+  color:var(--c1);
+}
+.five
+{
+  text-align:center;
+}
+h3
+{
+  text-decoration:dashed underline;
+}
+.correct
+{
+  color:red;
+}
+.blue
+{
+  color:hotpink;
+}
+.c1,.c2,.c3,.c4
+{
+  width:150px;
+  height:150px;
+  border-radius:50%;
+}
+.c1
+{
+  background:red;
+  position:absolute;
+  left:50px;
+  top:120px;
+  width:200px;
+  height:200px;
+  filter:blur(20px);
+  z-index:1;
+}
+.c2
+{
+  background:yellow;
+  position:absolute;
+  right:5px;
+  top:150px;
+  filter:blur(20px);
+  z-index:1;
+}
+.c3{
+  background:#3895d3;
+  position:absolute;
+  left:190px;
+  top:370px;
+  filter:blur(20px);
+  z-index:1;
+}
+.c4{
+  background:lime;
+  position:absolute;
+  left:40px;
+  top:370px;
+  filter:blur(40px);
+  z-index:1;
+}</style></head> 
+ <body> 
+  <div class="main"> 
+   <div class="container"> 
+    <div class="curtain"> 
+     <h1>🥳🥳You won</h1> 
+    </div> 
+    <h3>Guess a number between 0-100</h3> 
+    <div class="one"> 
+     <input type="number" class="user_input" id="user_input"> 
+     <button class="btn" id="btn">Submit</button> 
+    </div> 
+    <div class="five"> 
+     <p id="msg1"></p> 
+     <p id="msg2">Num of guesses are</p> 
+     <p id="msg3">The number guessed are:0</p> 
+    </div> 
+   </div> 
+  </div> 
+  <div class="c1"></div> 
+  <div class="c2"></div> 
+  <div class="c3"></div> 
+  <div class="c4"></div> 
+ 
+<script type="text/javascript" id="dcoder_script">const btn=document.getElementById("btn");
+btn.addEventListener('click',myFun);
+const msg1=document.getElementById("msg1");
+const msg2=document.getElementById("msg2");
+const msg3=document.getElementById("msg3");
+const random=Math.floor(Math.random()*100)+1;
+const curtain=document.querySelector('.curtain')
+const v=document.querySelector('.container')
+let count=0;
+let guesses=[];
+function myFun()
+{
+  let input=document.getElementById("user_input").value;
+  if(input < 1 || input >100)
+  {
+    msg1.textContent="Come on!enter between 1 and 100 !"
+  }
+  else if(input < random)
+  {
+    guesses.push(input);
+    count++;
+    msg1.classList.add('correct');
+    msg1.innerText="your guess is low";
+    msg2.innerText=`Num of guesses are:${count}`
+    msg3.innerText=`The guesses are ${guesses}`
+  }
+  else if(input > random )
+  {  
+    guesses.push(input);
+    count++;
+    msg1.classList.add('blue')
+    msg1.innerText="your guess is high";
+    msg2.innerText=`Num of guesses are ${count}`
+    msg3.innerText=`The guesses are ${guesses}`
+  }
+  else
+  {
+    msg1.innerText=`You won!`;
+    curtain.classList.add("expand");
+    v.classList.add('change');
+    btn.disabled;
+    
+  }
+  input="";
+}</script></body></html>

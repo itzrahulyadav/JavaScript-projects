@@ -1,0 +1,217 @@
+<!doctype html><html><head> 
+  <title>
+   The calculator!!  
+ </title> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0"> 
+ <style type="text/css" id="dcoder_stylesheet">*{
+   margin:0;
+   padding:0;
+   box-sizing:border-box;
+}
+.container
+{
+  background:#673ED2;
+  height:100vh;
+  width:100vw;
+  display:flex;
+  align-items:center;
+  justify-content:center; 
+}
+main
+{
+  background:white;
+  display:flex;
+  align-items:center;
+  flex-direction:column;
+  display:grid;
+  grid-template-columns:1fr;
+  width:90%;
+  border-radius:5px;
+  padding:5px;
+}
+.shape-container
+{
+  width:100%;
+  background:#eef3f8;
+  height:300px;
+  overflow:hidden;
+  padding:5px;
+  display:grid;
+  border-radius:5px;
+  place-items:center;
+}
+#shape
+{
+  width:300px;
+  height:200px;
+  background:linear-gradient(purple,hotpink);
+  border-radius:23% 34% 45% 70% / 91% 85% 3% 21%
+}
+.dimensions
+{
+  display:flex;
+  align-items:center;
+  flex-direction:column;
+  
+}
+.sliders
+{
+  display:grid;
+  width:100%;
+  grid-template-columns:2fr;
+  grid-gap:20px;
+  padding:10px;
+}
+.copyArea
+{
+   padding:20px 10px;
+}
+#copy-button
+{
+   width:70px;
+   height:40px;
+   background:linear-gradient(45deg,#1f2f98,#4adede);
+   border:1px solid black;
+   color:white;
+   border-radius:5px;
+   font-weight:bold;
+
+}
+input[type="number"]
+{
+  outline:0;
+  padding:.5em;
+  border-radius:5px;
+  border:none;
+  background:#eef3f8;
+  caret-color:hotpink;
+}
+input[type="number"]:focus
+{
+  border:1px solid black;
+  
+}
+input[type="text"]
+{
+  padding:.5rem .2rem;
+  border-radius:5px;
+  background:#eef3f8;
+  border:none;
+  outline:0;
+}
+.slider
+{
+  appearance:none;
+  width:100%;
+  height:15px;
+  background:linear-gradient(45deg,#1f2f98,#4adede);
+  border-radius:10px;
+}
+.slider::-webkit-slider-thumb
+{
+  -webkit-appearance:none;
+  background:#eef3f8;
+  background:powderblue;
+  width:25px;
+  height:25px;
+  border-radius:50%;
+}
+.float
+{
+  position:absolute;
+  background:#673ed2;
+  font-size:30px;
+  padding:.5rem .5rem;
+  border-radius:5px;
+  display:none;
+  color:white;
+  opacity:0;
+}
+.pop
+{
+  display:block;
+  opacity:100%;
+}</style></head> 
+ <body> 
+  <div class="container"> 
+   <div class="float">
+     Copied To clipboard 
+   </div> 
+   <main> 
+    <div class="shape-container"> 
+     <div id="shape"></div> 
+    </div> 
+    <div class="dimensions"> 
+     <label for="height-input">height</label> 
+     <input type="number" value="150" id="height-input"> 
+     <label for="width-input">width</label> 
+     <input type="number" value="150" id="width-input"> 
+    </div> 
+    <div class="sliders"> 
+     <input type="range" value="20" id="left" class="slider"> 
+     <input type="range" value="80" id="right" class="slider"> 
+     <input type="range" value="60" id="bottom" class="slider"> 
+     <input type="range" value="80" id="top" class="slider"> 
+    </div> 
+    <div class="copyArea"> 
+     <input type="text" id="copyCode" readonly> 
+     <button id="copy-button">Copy</button> 
+    </div> 
+   </main> 
+  </div> 
+ 
+<script type="text/javascript" id="dcoder_script">const shape=document.getElementById("shape");
+
+const height=document.getElementById("height-input");
+
+const width=document.getElementById("width-input");
+
+height.addEventListener("input",main)
+width.addEventListener("input",main)
+
+const leftSlider=document.getElementById("left")
+
+const rightSlider=document.getElementById("right")
+
+const topSlider=document.getElementById("top")
+
+const bottomSlider=document.getElementById("bottom")
+
+leftSlider.addEventListener('change',main)
+rightSlider.addEventListener('change',main)
+topSlider.addEventListener('change',main);
+bottomSlider.addEventListener('change',main)  
+   
+    
+
+function main()
+{
+   let leftValue=leftSlider.value;
+   let rightValue=leftSlider.value;
+   let topValue=topSlider.value;
+   let bottomValue=bottomSlider.value;
+      
+   let borderRadius=`${leftValue}% ${100-topValue}% ${topValue}% ${100-leftValue}% / ${rightValue}% ${100-bottomValue}% ${bottomValue}% ${100-rightValue}%`
+   
+   shape.style.cssText=`border-radius:${borderRadius};height:${height.value}px;width:${width.value}px`
+   
+   //shape.style.cssText=`border-radius:${bor}`
+   document.getElementById("copyCode").value=`border-radius:${borderRadius}`
+   
+}
+
+
+const copyButton=document.getElementById("copy-button")
+
+const popUp=document.querySelector('.float')
+copyButton.addEventListener('click',()=>{
+   
+   copyCode.select()
+   document.execCommand('copy');
+   popUp.classList.add("pop")
+   
+   setTimeout(()=>{
+     popUp.classList.remove('pop');
+   },500)
+})</script></body></html>

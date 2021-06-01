@@ -1,0 +1,192 @@
+<!doctype html><html><head> 
+  <title>
+   Flip a coin 
+ </title> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0"> 
+  <link rel="preconnect" href="https://fonts.gstatic.com"> 
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500&amp;display=swap" rel="stylesheet"> 
+ <style type="text/css" id="dcoder_stylesheet">*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: 'Rubik', sans-serif;
+  
+}
+body
+{
+   height:100vh;
+   background:linear-gradient(
+      to right,
+      #575ce5 50%,
+      #f9fbfc 50%
+   )fixed;
+}
+.container
+{
+  background:#ffffff;
+  width:300px;
+  padding:40px;
+  position:absolute;
+  transform:translate(-50%,-50%);
+  top:50%;
+  left:50%;
+  border-radius:5px;
+  -webkit-perspective:300px;
+  perspective:300px;
+}
+.stats
+{
+  text-align:right;
+}
+.head,.tail
+{
+   position:absolute;
+   top:0;
+   background:gold;
+   width:80px;
+   height:80px;
+   border-radius:50%;
+   text-align:center;
+   display:flex;
+   border:5px solid yellow;
+   align-items:center;
+   justify-content:center;
+   -webkit-backface-visibility:visible;
+}
+.tail
+{
+   transform:rotateX(180deg)
+}
+.coin
+{
+  width:100px;
+  height:100px;
+  position:relative;
+  margin:50px auto;
+  transform-style:preserve-3d;
+  color:yellow
+}
+@keyframes spin-tails
+{
+  0%{
+      transform:rotateX(0);
+  }
+  100%
+    {
+      transform:rotateX(1980deg);
+    }
+}
+@keyframes spin-heads
+{
+ 0%{
+      transform:rotateX(0);
+  }
+  100%
+    {
+      transform:rotateX(2160deg);
+    }
+ 
+}
+.buttons
+{
+  display:flex;
+  justify-content:space-between;
+}
+button
+{
+   padding:.5rem;
+   border:2.5px solid #424ae0;
+   border-radius:5px;
+   background:#fff;
+}
+.flip-coin
+{
+  background:#424ae0;
+  color:#fff;
+}
+.flip-coin:disabled
+{
+  background:#e1e0ee;
+  color:#101020;
+  border:2px solid #e1e0ee;
+}
+.reset
+{
+  color:#424ae0;
+}0</style></head> 
+ <body> 
+  <div class="container"> 
+   <div class="stats"> 
+    <p id="head-count">Heads:0</p> 
+    <p id="tail-count">Tails:0</p> 
+   </div> 
+   <div class="coin"> 
+    <div class="heads"> 
+     <p class="head">Heads</p> 
+    </div> 
+    <div class="tails"> 
+     <p class="tail">Tails</p> 
+    </div> 
+   </div> 
+   <div class="buttons"> 
+    <button class="flip-coin" id="flip-button">Flip coin</button> 
+    <button class="reset" id="reset-button">Reset</button> 
+   </div> 
+  </div> 
+ 
+<script type="text/javascript" id="dcoder_script">const flipButton=document.getElementById("flip-button");
+
+const resetButton=document.getElementById("reset-button")
+
+const coin=document.querySelector(".coin")
+
+const headCount=document.getElementById("head-count");
+
+const tailCount=document.getElementById("tail-count")
+let heads=0;
+let tails=0;
+flipButton.addEventListener("click",()=>{
+  let i=Math.floor(Math.random()*2);
+  coin.style.animation=null;
+  
+  if(i)
+  {
+    setTimeout(()=>{
+       coin.style.animation="spin-heads 3s forwards"
+    },100)
+    
+    heads++;
+  }
+  else
+  {
+    setTimeout(()=>{
+       coin.style.animation="spin-tails 3s forwards"
+    },100)
+    
+    tails++;
+  }
+   
+   
+   setTimeout(updateStats,3000);
+   disableButton();
+})
+
+function updateStats()
+{
+   headCount.textContent=`Heads:${heads}`
+   tailCount.textContent=`Tails:${tails}`
+}
+
+function disableButton()
+{
+  flipButton.disabled=true;
+  setTimeout(()=>{
+      flipButton.disabled=false;
+  },3000)
+}
+resetButton.addEventListener("click",()=>{
+    heads=0;
+    tails=0;
+    updateStats();
+})</script></body></html>

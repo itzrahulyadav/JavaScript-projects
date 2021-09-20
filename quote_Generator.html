@@ -1,0 +1,125 @@
+<!doctype html><html><head> 
+  <title>
+   The calculator!!  
+ </title> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0"> 
+  <link rel="preconnect" href="https://fonts.gstatic.com"> 
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,700;1,900&amp;display=swap" rel="stylesheet"> 
+  <link rel="preconnect" href="https://fonts.gstatic.com"> 
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&amp;family=Playball&amp;display=swap" rel="stylesheet"> 
+ <style type="text/css" id="dcoder_stylesheet">*{
+  padding:0;
+  margin:0;
+  box-sizing:border-box;
+}
+body
+{
+  display:flex;
+  align-items:center;
+  height:100vh;
+  justify-content:center;
+  flex-direction:column;
+}
+h1
+{
+  font-family:"lobster";
+  text-stroke:2px solid black;
+}
+main{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  background:linear-gradient(45deg,#ff2cdf,#00ffff);
+  width:90%;
+  background-size:400%;
+  background-position:left;
+  height:50vh;
+  justify-content:space-around;
+  border-radius:6px;
+  animation:shuffle 8s infinite alternate;
+}
+@keyframes shuffle
+{
+  0%{background-position:left}
+  100%{background-position:right}
+}
+
+div{
+   // border:2px solid black;
+    border-radius:5px;
+    width:90%;
+    height:70%;
+    padding:1em 1em;
+    display:flex;
+    flex-direction:column;
+    backdrop-filter:blur(90px);
+    background:rgba(255,255,255,.2);
+    font-family:sans-serif;
+    font-weight:500;
+    font-size:17px;
+    justify-content:space-around;
+   
+}
+#author{
+  justify-self:flex-end;
+  align-self:flex-end;
+  font-family:'Raleway';
+  color:white;
+}
+.pop
+{
+  transform:scale(.9);
+}
+button
+{
+  border-radius:5px;
+  padding:.5em 1em;
+  font-family:'Raleway';
+  border:1px solid black;
+  background:white;
+  outline:0;
+}
+footer h1
+{
+  font-family:'Raleway';
+  font-size:15px;
+}</style></head> 
+ <body> 
+  <h1>Quotes</h1> 
+  <main> 
+   <div> 
+    <q id="quote"></q> 
+    <p id="author"></p> 
+   </div> 
+   <button id="btn">Get quote</button> 
+  </main> 
+  <footer>
+    <h1>Made with ♥️ by Rahul yadav</h1>  
+  </footer>
+ 
+<script type="text/javascript" id="dcoder_script">let api=`https://type.fit/api/quotes`;
+const quote=document.getElementById("quote");
+const author=document.getElementById("author")
+const button=document.getElementById("btn");
+button.addEventListener("click",getQuote);
+function getQuote()
+{
+  button.classList.add("pop")
+  setTimeout(()=>{
+    button.classList.remove("pop")
+  },100)
+  fetch(api)
+  .then(response=>response.json())
+  .then(data=>{
+     myFun(data);
+          
+  })
+}
+getQuote();
+function myFun(data)
+{
+  const random=Math.floor(Math.random()*1620)+1;
+  quote.innerText=(data[random].text) ;
+  author.innerText="~"+(data[random].author);
+}</script></body></html>

@@ -1,0 +1,798 @@
+<!doctype html><html><head> 
+  <title>
+   The calculator!!  
+ </title> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0"> 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,700&amp;display=swap" rel="stylesheet"> 
+  <link rel="preconnect" href="https://fonts.gstatic.com"> 
+  <link rel="preconnect" href="https://fonts.gstatic.com"> 
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@1,900&amp;display=swap" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@1,600&amp;display=swap" rel="stylesheet"> 
+ <style type="text/css" id="dcoder_stylesheet">*,*:before,*:after
+{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+:root{
+  --color1:linear-gradient(45deg,#ff2cdf,#ff2525,#fc6767,#5433ff,#20bdff,#a5fecb);
+  --font1:'Poppins', sans-serif;
+}
+html
+{
+  scroll-behaviour:smooth;
+  font-family:consolas;
+}
+.head
+{
+  height:50px;
+  display:flex;
+  background:black;
+  flex-direction:row;
+  align-items:center;
+  top:0;
+  position:relative;
+  justify-content:space-between;
+  width:100%;
+}
+.topBtn
+{
+   position:fixed;
+   top:90vh;
+   left:80vw;
+   width:50px;
+   height:50px;
+   display:none;
+   border-radius:50%;
+   background:white;
+   text-align:center;
+   font-size:40px;
+   opacity:.8;
+   
+}
+.show
+{
+  display:block;
+}
+.fix-it
+{
+  position:fixed;
+}
+.fix-it .head__logo
+{
+  margin:auto;
+  font-size:35px;
+  background:transparent;
+ -webkit-text-stroke-width:1px;
+ -webkit-text-stroke-color:white;
+ 
+}
+.fix-it .head
+{
+  background:white;
+}
+.fix-it .head__menu i
+{
+ display:none;
+}
+.head__logo
+{
+   text-decoration:none;
+   background:var(--color1);
+   background-size:400%;
+   background-position:left;
+   -webkit-background-clip:text;
+   color:transparent;
+   font-size:20px;
+   font-family:var(--font1);
+   padding:0 0 0 10px;
+   transition:all .5s ease-in-out;
+   animation:shine 4s ease infinite alternate;
+}
+.head__menu i
+{
+  background:var(--color1);
+  -webkit-background-clip:text;
+  color:transparent;
+  padding:0 15px 0 0;
+  font-size:20px;
+  background-size:400%;
+  background-position:left;
+  animation:shine 4s ease infinite alternate;
+}
+
+.nav-menu
+{
+  display:flex;
+  background:black;
+  align-items:center;
+  justify-content:center;
+  margin-top:-250px;
+  opacity:1;
+  transition:all .5s ease-in-out;
+  position:absolute;
+  width:100%;
+}
+.nav-menu ul 
+{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+}
+.nav-menu li
+{
+  list-style-type:none;
+  margin:15px 0 0 0;
+  
+}
+.nav-menu a
+{
+  text-decoration:none;
+  color:white;
+}
+.sign-up
+{
+  margin:0 0 15px 0;
+  background:black;
+  border:2px solid white;
+  color:white;
+  border-radius:8px;
+  outline:0;
+  font-size:18px;
+  padding:5px;
+}
+.active
+{
+  margin-top:0px;
+  position:relative;
+}
+.design
+{
+  background:var(--color1);
+  height:3px;
+  background-size:400%;
+  background-position:left;
+  animation:shine 4s ease infinite alternate;
+}
+
+.banner
+{
+  height:250px;
+  background:black;
+  background-blend-mode:soft-light;
+  top:0px;
+
+ }
+.banner h1
+{
+  color:transparent;
+  font-family: 'Nunito', sans-serif;
+  padding:20px;
+  background:var(--color1);
+  -webkit-background-clip:text;
+  background-size:400%;
+  background-position:left;
+  animation:shine 4s ease infinite alternate;
+}
+.banner p
+{
+  padding:40px 5px 5px 28px;
+  font-family: 'Nunito', sans-serif;
+}
+@keyframes shine
+{
+  0%{
+    background-position:left;
+  }
+100%
+   {
+    background-position:right;
+   }
+}
+.btn
+{
+  color:white;
+  background:green;
+  border:1px solid limegreen;
+  border-radius:5px;
+  padding:10px;
+  outline-width:0;
+  background:transparent;
+  color:white;
+  text-decoration:none;
+  border:2px solid white;
+  margin:20px 0px 0px 30px;
+}
+.featured
+{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  background:#212121;
+  height:auto;
+}
+.featured h2
+{
+  align-self:flex-start;
+  padding:10px 0 20px 20px;
+  color:white;
+  font-family: 'Nunito', sans-serif;
+}
+.container-1
+{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  grid-template-rows:3;
+  grid-gap:10px;
+  padding:0 0 40px 0 ;
+}
+@media and screen(1200px)
+{
+  grid-template-columns:repeat(5,1fr);
+}
+.color
+{
+  width:100px;
+  height:100px;
+  border-radius:10px;
+  padding:10px;
+}
+.color i
+{
+  color:white;
+  width:50px;
+  padding:5px;
+  border:2px solid white;
+  border-radius:10px;
+  opacity:0;
+  font-size:55px;
+}
+.container-2
+{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(100px,1fr));
+  grid-template-rows:3;
+  grid-gap:10px;
+  grid-auto-rows:100px;
+  
+}
+.container-2 div
+{
+  ;
+}
+.container-2 div:nth-child(1)
+{
+  grid-column:2/4;
+  grid-row:1/3;
+  width:auto;
+  height:auto;
+  background-image:linear-gradient(45deg,#833ab4,#fd1d1d,#fcb045);
+  background-size:400%;
+  background-position:left;
+  animation:shine 4s ease infinite alternate
+}
+.container-2 div:nth-child(5)
+{
+  grid-column:1/4;
+  grid-row:3/4;
+  width:auto;
+  height:auto;
+  background:linear-gradient(45deg,#fdfc47,#24fe41);
+  background-size:400%;
+  background-position:left;
+  animation:shine 1s ease infinite alternate;
+
+}
+.container-2 div:nth-child(8)
+{
+  grid-column:1/3;
+  background:green;
+  grid-row:4/6;
+  width:auto;
+  height:auto;
+  background:-webkit-linear-gradient(to right, #fc67fa, #f4c4f3);  /* Chrome 10-25, Safari 5.1-6 */
+  background:linear-gradient(-45deg,#fc67fa, #f4c4f3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background-size:400%;
+  background-position:left;
+  animation:shine 4s ease infinite;
+
+
+}
+.container-2 div:nth-child(11)
+{
+  grid-column:2/4;
+  background:green;
+  grid-row:6/8;
+  width:auto;
+  height:auto;
+  background:-webkit-linear-gradient(45deg, #ff6a00, #ee0979);  /* Chrome 10-25, Safari 5.1-6 */
+  background:linear-gradient(50deg,#ff6a00, #ee0979); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background-size:400%;
+  background-position:left;
+  animation:shine 4s ease infinite alternate
+
+}
+.container-2 div:nth-child(12)
+{
+  grid-column:1/2;
+  background:green;
+  grid-row:7/9;
+  width:auto;
+  height:auto;
+  background:linear-gradient(45deg,#00dbde, #fc00ff);
+   background-size:400%;
+  background-position:left;
+  animation:shine 4s ease infinite alternate
+
+}
+.container-2 div:nth-child(2)
+{
+  background:linear-gradient(45deg,#a044ff,#6a3093);
+   background-size:400%;
+  background-position:left;
+  animation:shine 4s ease infinite alternate;
+
+}
+.container-2 div:nth-child(3)
+{
+  background:linear-gradient(45deg,#00c9ff,#92fe9d);
+  background-size:400%;
+  background-position:left;
+  animation:shine 4s ease infinite alternate;
+
+}
+.container-2 div:nth-child(7)
+{
+  background:linear-gradient(45deg,#f09819,#edde5d);
+  background-size:400%;
+  background-position:left;
+  animation:shine 4s ease infinite alternate;
+
+}
+
+.container-2 div:nth-child(9)
+{
+  background:linear-gradient(90deg,#43c6ac,#191654);
+  background-size:300%;
+  background-position:left;
+  animation:shine 3s ease infinite alternate;
+
+}
+
+.container-2 div:nth-child(10)
+{
+  background:linear-gradient(45deg,#F7971E,#FFD200);
+   background-size:400%;
+  background-position:left;
+  animation:shine 4s ease infinite ;
+
+}
+.container-2 div:nth-child(4)
+{
+  background:linear-gradient(45deg,#22c1c3,#fdbb2d);
+  background-size:400%;
+  background-position:left;
+  animation:shine 4s ease infinite alternate;
+
+}
+.container-2 div:nth-child(6)
+{
+  background:linear-gradient(45deg,#03001e,#7303c0,#ec38bc,#fdeff9);
+   background-size:400%;
+  background-position:left;
+  animation:shine 4s ease infinite alternate;
+}
+
+
+.top-colors
+{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  background:#212121;
+  width:100%;
+  height:auto;
+  padding:0 0 30px 0;
+}
+.top-colors h2
+{
+  align-self:flex-start;
+  padding:10px 0 20px 20px;
+  color:white;
+  font-family: 'Nunito', sans-serif;
+}
+.yml
+{
+  display:flex;
+  flex-direction:column;
+  padding:10px  0px 20px 0px;
+  background:#212121;
+}
+.yml h1
+{
+  padding:20px 0 20px 20px;
+  color:white;
+  font-family: 'Nunito', sans-serif;
+}
+.yml div:nth-child(1)
+{
+  margin-left:20px;
+}
+.container-3
+{
+  display:grid;
+  grid-template-columns:repeat(3,1fr 1fr 1fr);
+  grid-gap:10px;
+  overflow-x:scroll;
+}
+.box
+{
+  width:100px;
+  height:100px;
+  border-radius:10px; 
+}
+.box:nth-child(7)
+{
+  background:#fa255e;
+}
+.box:nth-child(2)
+{
+  background:#4c1c5d;
+}
+.box:nth-child(3)
+{
+  background:#cae7df;
+}
+.box:nth-child(9)
+{
+  background:#c5d5cb;
+}
+.box:nth-child(5)
+{
+  background:#06bee1;
+}
+.box:nth-child(4)
+{
+  background:#fcee14;
+}
+.box:nth-child(6)
+{
+  background:#ff94ad;
+}
+.box:nth-child(1)
+{
+  background:#00eae6;
+  background-attachment:fixed;
+}
+.box:nth-child(8)
+{
+  background:#ff5733;
+}
+.about-us
+{
+  display:flex;
+  flex-direction:row;
+ // align-items:center;
+ // justify-content:center;
+  height:300px;
+  padding:10px 0 10px 0;
+  background:#212121;
+}
+.about-us h1
+{
+  color:transparent;
+  font-size:40px;
+  text-align:center;
+  //-webkit-text-stroke:1px white;
+  background:#212121;
+  writing-mode:vertical-rl;
+ // font-family:var(--font1);
+ background:linear-gradient(95deg,#7f00ff,#e100ff,#833ab4,#fd1d1d,#fcb045);
+  background-size:300%;
+  -webkit-background-clip:text;
+  background-position:left;
+  animation:shine 4s ease infinite alternate;
+  font-family: 'Nunito', sans-serif;
+  
+}
+.about-us-content
+{
+  width:100%;
+  padding:30px 20px 20px 20px;
+  text-align:left;
+  font-size:25px;
+  color:rgba(0,0,0,0.9);
+  font-family: 'Nunito', sans-serif;
+  font-weight:bold;
+  border-radius:10px;
+  background:linear-gradient(45deg,#7f00ff,#e100ff,#833ab4,#fd1d1d,#fcb045);
+  background-size:300%;
+  background-position:left;
+  animation:shine 4s ease infinite alternate;
+
+}
+.contactus
+{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:20px 0 20 0px;
+}
+.contactus h1
+{
+  text-align:center;
+  font-family:'Nunito',sans-serif;
+}
+.contact__us__form
+{
+  display:flex;
+  width:80vw;
+  flex-direction:column;
+  margin:20px;
+  
+}
+.contact__us__form input
+{
+  height:50px;
+  border-radius:10px;
+  margin:10px;
+  width:80vw;
+  //background:linear-gradient(red,orange);
+  padding:20px;
+  border:2px solid black;
+}
+.contact__us__form textarea
+{
+  width:80vw;
+  height:200px;
+  margin:10px;
+  padding:20px;
+  border-radius:10px;
+}
+contact__us__form textarea::placeholder
+{
+  color:black
+}</style></head> 
+ <body> 
+  <div class="topBtn">
+    ^ 
+  </div> 
+  <header class="head"> 
+   <a href="#nav-menu" class="head__logo">ColorFine</a> 
+   <div class="head__menu" id="head__menu"> 
+    <i class="fa fa-bars"></i> 
+   </div> 
+  </header> 
+  <nav class="nav-menu" id="nav-menu"> 
+   <ul> 
+    <li><a href="#">HOME</a></li> 
+    <li><a href="#about">ABOUT</a></li> 
+    <li><a href="#contactus">CONTACT</a></li> 
+    <li><a href="#top-colors">TOP COLORS</a></li> 
+    <li><button class="sign-up">Sign-up</button></li> 
+   </ul> 
+  </nav> 
+  <div class="design"></div> 
+  <section class="banner"> 
+   <h1>Colors speak louder than words...</h1> 
+   <a href="#featured" class="btn">Browse now</a> 
+   <p style="color:white">click on any color to copy its code</p> 
+  </section> 
+  <section class="featured" id="featured"> 
+   <h2>Featured colors</h2> 
+   <div class="container-1" data-value="linear-gradient(green,blue)"> 
+    <div class="color" data-value="linear-gradient(#ff416c,#ff4b2b)" data-copy="#ff416c,#ff4b2b"> 
+     <i class=" fa fa-copy"></i> 
+    </div> 
+    <div class="color" data-value="linear-gradient(#a8ff78,#78ffd6)" data-copy="#a8ff78,#78ffd6"> 
+     <i class=" fa fa-copy"></i> 
+    </div> 
+    <div class="color" data-value="linear-gradient(#a8c0ff,#3f2b96)" data-copy="#a8c0ff,#3f2b96"> 
+     <i class=" fa fa-copy"></i> 
+    </div> 
+    <div class="color" data-value="linear-gradient(#11998e,#38ef7d)" data-copy="#11998e,#38ef7d"> 
+     <i class=" fa fa-copy"></i> 
+    </div> 
+    <div class="color" data-value="linear-gradient(#fc5c7d,#6a82fb)" data-copy="#fc5c7d,#6a82fb"> 
+     <i class=" fa fa-copy"></i> 
+    </div> 
+    <div class="color" data-value="linear-gradient(#d3cce3,#e9e4f0)" data-copy="#d3cce3,#e9e4f0"> 
+     <i class=" fa fa-copy"></i> 
+    </div> 
+    <div class="color" data-value="linear-gradient(#cac531,#f3f9a7)" data-copy="#cac531,#f3f9a7"> 
+     <i class=" fa fa-copy"></i> 
+    </div> 
+    <div class="color" data-value="linear-gradient(#00f260,#0575e6)" data-copy="#00f260,#0575e6"> 
+     <i class=" fa fa-copy"></i> 
+    </div> 
+    <div class="color" data-value="linear-gradient(#fc4a1a,#f7b733)" data-copy="#fc4a1a,#f7b733"> 
+     <i class=" fa fa-copy"></i> 
+    </div> 
+    <div class="color" data-value="linear-gradient(#74ebd5, #acb6e5)" data-copy="#74ebd5, #acb6e5"> 
+     <i class=" fa fa-copy"></i> 
+    </div> 
+    <div class="color" data-value="linear-gradient(#22c1c3,#fdbb2d)" data-copy="#22c1c3,#fdbb2d"> 
+     <i class=" fa fa-copy"></i> 
+    </div> 
+    <div class="color" data-value="linear-gradient(#7f00ff,#e100ff)" data-copy="#7f00ff,#e100ff"> 
+     <i class=" fa fa-copy"></i> 
+    </div> 
+   </div> 
+  </section> 
+  <section class="top-colors" id="top-colors"> 
+   <h2>Top colors</h2> 
+   <div class="container-2"> 
+    <div class="color" data-value="linear-gradient()">
+      1 
+    </div> 
+    <div class="color" data-value="linear-gradient()">
+      2 
+    </div> 
+    <div class="color" data-value="linear-gradient()">
+      3 
+    </div> 
+    <div class="color" data-value="linear-gradient()">
+      4 
+    </div> 
+    <div class="color" data-value="linear-gradient()">
+      5 
+    </div> 
+    <div class="color" data-value="linear-gradient()">
+      6 
+    </div> 
+    <div class="color" data-value="linear-gradient()">
+      7 
+    </div> 
+    <div class="color" data-value="linear-gradient()">
+      8 
+    </div> 
+    <div class="color" data-value="linear-gradient()">
+      9 
+    </div> 
+    <div class="color" data-value="linear-gradient()">
+      10 
+    </div> 
+    <div class="color" data-value="linear-gradient()">
+      11 
+    </div> 
+    <div class="color" data-value="linear-gradient()">
+      12 
+    </div> 
+   </div> 
+  </section> 
+  <!--YOU-MAY-LIKE--> 
+  <section class="yml"> 
+   <h1>You Might Like</h1> 
+   <div class="container-3"> 
+    <div class="box"></div> 
+    <div class="box"></div> 
+    <div class="box"></div> 
+    <div class="box"></div> 
+    <div class="box"></div> 
+    <div class="box"></div> 
+    <div class="box"></div> 
+    <div class="box"></div> 
+    <div class="box"></div> 
+   </div> 
+  </section> 
+  <section class="about-us" id="about"> 
+   <h1>About Us</h1> 
+   <article class="about-us-content">
+     Your one step solution to every problem ,colorFine helps you find colors which are fine. 
+   </article> 
+  </section> 
+  <section class="contactus" id="contactus"> 
+   <h1>Contact</h1> 
+   <p>Feel free to share your thoughts with us.your comments and review mean so much to us.</p> 
+   <form class="contact__us__form"> 
+    <input type="text" class="contact__us__input"> 
+    <input type="text" class="contact__us__input"> 
+    <textarea rows="10" cols="0" placeholder="share your message....">  
+       </textarea> 
+    <input type="button" value="submit"> 
+   </form> 
+  </section> 
+ 
+<script type="text/javascript" id="dcoder_script">//accessing elements
+const menuBtn=document.getElementById("head__menu");
+const navMenu=document.querySelector(".nav-menu");
+const colors=document.querySelectorAll('.color');
+const copyButton=document.querySelectorAll(".color i");
+const gridColors=document.querySelectorAll(".container-2  div");
+const article=document.querySelector(".about-us-content");
+const header=document.querySelector(".head");
+let topofHead=header.offsetTop;
+
+//open menu button
+menuBtn.addEventListener('click',()=>{
+  navMenu.classList.toggle("active")
+})
+
+//eventListeners
+colors.forEach(color=>{
+   color.style.background=color.dataset.value;
+   color.addEventListener("click",()=>{
+    let fakeText=document.createElement("input");
+    fakeText.value=color.dataset.value;
+    document.body.appendChild(fakeText);
+    fakeText.select();
+    document.execCommand("copy");
+    document.body.removeChild(fakeText);
+   })
+});
+
+// Property value
+ gridColors.forEach(c=>{
+   let v=window.getComputedStyle(c).getPropertyValue("background");
+   c.addEventListener('click',()=>{
+     let fakeText=document.createElement("input");
+    fakeText.value=v;
+    document.body.appendChild(fakeText);
+    fakeText.select();
+    document.execCommand("copy");
+    document.body.removeChild(fakeText);
+   })
+ })
+ 
+ //scroll function
+ 
+ document.body.addEventListener("scroll",changeBg);
+ 
+ function  changeBg()
+ {
+   document.getElementById("featured").style.backgroundColor="white"
+  
+ }
+ 
+ const content=[
+  "Hello we,are colorFine we provide colors for every purpose and for everything.",
+  " Whether its a website,design or any other thing just with a single click copy the colors in your clipboard.",
+  "Your one step solution to every problem ,colorFine helps you find colors which are fine. " 
+ ]
+ let i=-1;
+ setInterval(myFun,6000);
+ function myFun()
+ { 
+   ++i;
+   article.innerHTML=content[i];
+   
+   if(i===content.length)
+   {
+     i=-1
+   }
+ }
+ 
+ //scrollToTop
+ const moveToTop=document.querySelector(".topBtn");
+ moveToTop.addEventListener("click",()=>{
+    window.scroll(0,0);
+ })
+ window.addEventListener("scroll",()=>{
+   if(window.pageYoffset > 400)
+   {
+     moveToTop.classList.add("show")
+   }
+   else
+   {
+     moveToTop.classList.remove("show")
+   }
+ });
+ 
+window.addEventListener("scroll",function(){
+   if(window.scrollY > 0)
+   {
+     header.classList.add("fix-it");
+   }
+   else
+   {
+     header.classList.remove("fix-it")
+   }
+})
+
+
+
+</script></body></html>

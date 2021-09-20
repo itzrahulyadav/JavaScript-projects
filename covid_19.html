@@ -1,0 +1,109 @@
+<!doctype html><html><head> 
+  <title>
+   The calculator!!  
+ </title> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0"> 
+  <link rel="preconnect" href="https://fonts.gstatic.com"> 
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@1,500&amp;display=swap" rel="stylesheet"> 
+  <link rel="preconnect" href="https://fonts.gstatic.com"> 
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@1,500&amp;family=Nunito:wght@800&amp;display=swap" rel="stylesheet"> 
+ <style type="text/css" id="dcoder_stylesheet">*{
+  margin:0;
+  padding:0;
+  font-family: 'Nunito', sans-serif;
+}
+body
+{
+  background:linear-gradient(#521dde,#a183ef);
+  min-height:100vh;
+}
+.logo
+{
+  text-align:center;
+}
+section
+{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:space-around;
+  height:80vh;
+  //border:2px solid black;
+}
+h4{
+   text-align:center;
+   bottom:0;
+}
+.total
+{
+ // border:2px solid black;
+  align-items:center;
+  display:flex;
+  justify-content:center;
+  flex-direction:column;
+  width:80%;
+}
+.total h2
+{
+  border:2px solid black;
+  padding:.2em 1em;
+  border-radius:8px;
+  background:#68e0ff;
+ 
+}
+.logo
+{
+  color:white
+}
+.one h2
+{
+  background:skyblue
+}
+.two h2
+{
+  background:limegreen
+}
+.three h2
+{
+  background:red
+}</style></head> 
+ <body> 
+  <h1 class="logo">Covid-19 Tracker</h1> 
+  <section> 
+   <div class="total one"> 
+    <h1>Active</h1> 
+    <h2 id="active" class="data">......</h2> 
+   </div> 
+   <div class="total two"> 
+    <h1>Total Recover</h1> 
+    <h2 id="recover" class="data">.....</h2> 
+   </div> 
+   <div class="total three"> 
+    <h1>Total Deaths</h1> 
+    <h2 id="death" class="data">.......</h2> 
+   </div> 
+  </section> 
+  <h4>Made with ♥️ by Rahul yadav</h4>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script> 
+ 
+<script type="text/javascript" id="dcoder_script">const url=`https://api.covid19api.com/summary`;
+const url2=`https://api.covid19api.com/dayone/country/india/status/confirmed/live`
+function getInfo()
+{
+  fetch(url)
+  .then(r=>r.json())
+  .then(data=>{
+  document.getElementById("active").innerText=data.Global.TotalConfirmed
+  document.getElementById("recover").innerText=data.Global.TotalRecovered
+  document.getElementById("death").innerText=data.Global.TotalDeaths
+  // console.log(JSON.stringify(data))
+  // console.log(data.Countries[76].TotalConfirmed)
+  })
+}
+getInfo()
+//adding gsap animations
+/*gsap.from("#active",{y:-200,opacity:0,duration:1});
+gsap.from("#recover",{y:-200,opacity:0,duration:1.2});*/
+gsap.from(".logo",{scale:.5,opacity:0,duration:1.5})
+gsap.from(".data",{y:-200,opacity:0,duration:.5,stagger:.2})</script></body></html>

@@ -1,0 +1,192 @@
+<!doctype html><html><head> 
+  <title>
+   The calculator!!  
+ </title> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,user-scalable=no"> 
+  <link rel="preconnect" href="https://fonts.gstatic.com"> 
+  <link href="https://fonts.googleapis.com/css2?family=Nunito&amp;display=swap" rel="stylesheet"> 
+  <link rel="preconnect" href="https://fonts.gstatic.com"> 
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&amp;display=swap" rel="stylesheet"> 
+  <link rel="preconnect" href="https://fonts.gstatic.com"> 
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&amp;display=swap" rel="stylesheet"> 
+ <style type="text/css" id="dcoder_stylesheet">*{
+  margin:0;
+  padding:0px;
+  box-sizing:border-box;
+}
+:root
+{
+  --c1:linear-gradient(to left,#ffa751,
+#ffe259);
+  --c0:linear-gradient(springgreen,yellow);
+  --c2:linear-gradient(#06beb6,#48b1bf);
+  --c3:linear-gradient(#da22ff,
+#9733ee);
+}
+body
+{
+  background:powderblue;
+  padding:0px 5px;
+}
+header
+{
+  text-align:center;
+  border-radius:8px;
+  padding:2px;
+  font-family:'Poppins',sans-serif;
+  backdrop-filter:blur(8px);
+  color:cadetblue;
+
+}
+
+.container
+{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  margin:20px 2px 2px;
+  background:rgba(255,255,255,.2);
+  backdrop-filter:blur(40px);
+  border-radius:8px;
+  height:140px;
+  font-family:'Raleway',Sans-serif;
+}
+input
+{
+  padding:8px 10px;
+  margin-bottom:18px;
+  border-radius:8px;
+  border:none;
+  outline:0;
+}
+#result
+{
+  margin:20px 2px 2px;
+  min-height:400px;
+  border-radius:8px;
+  background:rgba(255,255,255,.4);
+  backdrop-filter:blur(40px);
+  padding:10px;
+  font-family:'Raleway',sans-serif;
+}
+#result h5
+{
+  text-align:center;
+  color:grey;
+  font-family:'Poppins',sans-serif;
+}
+#result .h
+{
+  margin:80px 0 20px 0px;
+  color:grey;
+}
+.b1
+{
+  width:200px;
+  height:200px;
+  background:var(--c1);
+  border-radius:50%;
+  z-index:-1;
+  position:absolute;
+  bottom:0px;
+  right:0px;
+  transition:all 2s ease-in;
+  filter:blur(50px);
+  animation:loiter2 20s infinite alternate;
+  
+}
+.b2{
+  width:200px;
+  filter:blur(50px);
+  height:200px;
+  position:absolute;
+  background:var(--c0);
+  border-radius:50%;
+  z-index:-1;
+  transition:all 2s ease-in;
+  animation:loiter 20s infinite alternate;
+}
+@keyframes loiter
+{
+  0%{top:0px;background:var(--c0);}
+  100%{top:400px;background:var(--c3);}
+}
+@keyframes loiter2
+{
+  0%{bottom:0px; background:var(--c1)}
+  100%{bottom:400px; background:var(--c2)}
+}
+button
+{
+  border-radius:5px;
+  border:none;
+  padding:7px 12px;
+  background:cadetblue;
+  outline:0;
+}
+.pop
+{
+  transform:scale(1.2);
+}
+footer
+{
+  text-align:center;
+  font-family:'Nunito'
+}</style></head> 
+ <body> 
+  <header> 
+   <h1>My Dixnary</h1> 
+  </header> 
+  <div class="container"> 
+   <input type="text" placeholder="Enter the word" id="input-text"> 
+   <button onclick="getWord()">Submit</button> 
+  </div> 
+  <div class="b1"></div> 
+  <div class="b2"></div> 
+  <section id="result"> 
+   <h5>Meaning</h5> 
+   <p></p> 
+   <h5 class="h">Example</h5> 
+   <p id="ex"></p> 
+  </section> 
+  <footer>
+   Made with ♥️ by Rahul yadav
+  </footer> 
+ 
+<script type="text/javascript" id="dcoder_script">const input=document.getElementById("input-text")
+const result=document.querySelector('#result p')
+const ex=document.querySelector('#ex')
+function getWord()
+{
+ const btn=event.target;
+ btn.classList.add("pop");
+ setTimeout(()=>{
+    btn.classList.remove("pop");
+ },100)
+ let api=`https://api.dictionaryapi.dev/api/v2/entries/en/${input.value}`;
+  getIt(api)
+ 
+ input.value="";
+ 
+ }
+function getIt(a)
+{
+  
+  fetch(a)
+  .then(res=>res.json())
+  .then(data=>{
+    showInfo(data)
+  }).catch(err=>{
+    result.innerText=`No meaning found🙃`;
+  })
+}
+  
+function showInfo(data)
+{
+  let r=`
+  ${(data[0].meanings[0].definitions[0].definition)}`;
+  result.innerText=r;
+  ex.innerText=`${(data[0].meanings[0].definitions[0].example)}`;
+}</script></body></html>

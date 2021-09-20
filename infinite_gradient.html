@@ -1,0 +1,50 @@
+<!doctype html><html><head> 
+  <title>
+   The calculator!!  
+ </title> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0"> 
+ <style type="text/css" id="dcoder_stylesheet">body
+{
+  display:flex;
+  align-items:center;
+  flex-direction:column;
+  justify-content:center;
+  height:100vh;
+  
+}
+span
+{
+  padding:2em;
+}
+button
+{
+  background:white;
+  border:2px solid black;
+  border-radius:10px;
+  color:black;
+  padding:1em 2em;
+  outline:0;
+  font-size:17px; 
+  margin-bottom:10px;
+}</style></head> 
+ <body> 
+  <span id="colorValue">rgb(0,0,0)<br>rgb(0,0,0)</span> 
+  <button id="changeColor">Generate Color</button> 
+ 
+<script type="text/javascript" id="dcoder_script">const colorValue=document.getElementById("colorValue");
+const btn=document.getElementById("changeColor")
+btn.addEventListener('click',myFun);
+
+function myFun()
+{
+  const r1=Math.floor(Math.random()*255)+1;
+  const r2=Math.floor(Math.random()*255)+1;
+  const r3=Math.floor(Math.random()*255)+1;
+  const c=`rgb(${r1},${r2},${r3})`
+  const d=`rgb(${r2},${r3},${r1})`
+  document.body.style.background=`linear-gradient(45deg,${c},${d})`;
+  colorValue.innerText=`${c}
+  ${d}`;
+}
+</script></body></html>

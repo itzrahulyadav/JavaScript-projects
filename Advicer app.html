@@ -1,0 +1,107 @@
+<!doctype html><html><head> 
+  <title>
+   The advicer app by Rahul yadav aka Re.
+ </title> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0"> 
+  <link rel="preconnect" href="https://fonts.googleapis.com"> 
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu&amp;display=swap" rel="stylesheet"> 
+ <style type="text/css" id="dcoder_stylesheet">*,
+*:before,
+*:after
+{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Ubuntu', sans-serif;
+}
+main
+{
+  background-image: linear-gradient(to left,#4201FF,#7400FF,turquoise);
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  background-position: center;
+  place-items: center;
+  background-size: 300%;
+  transition: background-position 5s;
+  animation: move 5s infinite alternate;
+}
+.container
+{
+   width: 80%;
+   background: white;
+   border-radius: 8px;
+   display: grid;
+   place-items: center;
+   padding: 10px 10px;
+}
+.advice
+{
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 20px;
+}
+.btn
+{
+  background: #white;
+  color: #4201ff;
+  font-size: 15px;
+  width: 100px;
+  border: 2px solid #4201ff;
+  border-radius: 5px;
+  padding: 5px 5px;  
+}
+.btn:after,
+.btn:before
+{
+   content : "";
+   background: #7400ff;
+   position: absolute;
+   width: 50px;
+}
+@keyframes move
+{
+  0%{
+    background-position: left;
+  }
+  50%{
+    background-position: center;
+  }
+  100%{
+    background-position: right;
+  }
+}
+@media only screen and (orientation:landscape)
+{
+   main
+    {
+      background:yellow;
+    }
+}</style></head> 
+ <body> 
+  <main> 
+   <div class="container"> 
+    <div class="advice"> 
+    </div> 
+    <button class="btn">Get</button> 
+   </div> 
+  </main> 
+ 
+<script type="text/javascript" id="dcoder_script">const api = "https://api.adviceslip.com/advice"
+const advice = document.querySelector('.advice')
+const btn = document.querySelector('.btn')
+
+async function getAdvice()
+{
+   const resp = await fetch(api);
+   const data = await resp.json();
+   renderAdvice(data);
+}
+getAdvice();
+btn.addEventListener('click',getAdvice)
+function renderAdvice(data)
+{
+   advice.innerText = data.slip.advice;
+}</script></body></html>
